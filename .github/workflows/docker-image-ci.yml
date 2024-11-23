@@ -18,8 +18,8 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build -t google_img_api:latest .
+      run: docker build -t ${{secrets.DOCKER_USERNAME}}/google_img_api:latest .
 
     - name: Push to Dockerhub
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/google_img_api:latest
+      run: docker push ${{secrets.DOCKER_USERNAME}}/google_img_api:latest
     
